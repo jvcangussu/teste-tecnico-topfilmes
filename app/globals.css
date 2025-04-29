@@ -15,11 +15,6 @@ body {
   color: #ddd8e4;
 }
 
-main {
-  text-align: center;
-  margin: 5rem auto;
-}
-
 h1 {
   font-size: 3rem;
   margin: 3rem auto;
@@ -28,4 +23,14 @@ h1 {
 
 p {
   font-size: 1.5rem;
+}
+
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
 }
