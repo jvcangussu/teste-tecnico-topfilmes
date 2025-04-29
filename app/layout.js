@@ -1,3 +1,4 @@
+import Footer from '@/components/footer/Footer';
 import './globals.css'
 import { Mulish } from 'next/font/google';
 
@@ -15,7 +16,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-BR" className={mulish.className}>
-      <body>{children}</body>
+      <body>
+        <div className="layout-container">
+          <main className="content">
+            {children}
+          </main>
+          <Footer />
+        </div>
+      </body>
     </html>
   );
 }
