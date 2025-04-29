@@ -1,0 +1,45 @@
+.container {
+  background-color: #1A1A1A;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 1rem;
+}
+
+.logo {
+  transition: transform 0.2s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+.logo img {
+  width: 5rem;
+  height: 5rem;
+  object-fit: contain;
+  filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.5));
+}
+
+.nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1.5rem;
+  font-size: 1.25rem;
+}
+
+.button {
+  text-decoration: none;
+  color: #EEF0F2;
+  text-align: center;
+}
+
+.button:hover {
+  color: #FFC405;
+}
+
+.button p {
+  font-size: 1rem;
+}

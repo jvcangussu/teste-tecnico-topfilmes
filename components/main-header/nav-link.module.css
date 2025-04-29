@@ -1,0 +1,35 @@
+.active {
+  background: #FFD23F;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+}
+
+.link {
+  text-decoration: none;
+  color: #EEF0F2;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  position: relative;
+}
+
+.link:hover,
+.link:active {
+  background: #FFC405;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #DE1A1A;
+  border-radius: 2px;
+}

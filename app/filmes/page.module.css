@@ -1,0 +1,14 @@
+.linksContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.link {
+  text-decoration: none;
+  color: #EEF0F2;
+}
+
+.link:hover {
+  color: #FFC405;
+}
