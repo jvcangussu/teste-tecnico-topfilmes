@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.box {
+  margin-top: 8px;
+  display: flex;
+  padding: 16px;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.controls .icon {
+  color: #FFD23F;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.controls .icon:hover {
+  color: #fad96d;
+}
+
+.control {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  text-align: inherit;
+  font: inherit;
+  border-radius: 0;
+  appearance: none;
+}
+
+.controls p {
+  font-weight: bold;
+}

@@ -1,6 +1,7 @@
 import MainHeader from "@/components/main-header/main-header";
 import styles from "./page.module.css";
 import Link from "next/link";
+import CardBox from "@/components/card/card-box";
 
 export default function FilmesPage() {
   return (
@@ -14,6 +15,7 @@ export default function FilmesPage() {
           <p>Filmes por ano de lançamento</p>
         </Link>
       </div>
+      <CardBox />
     </>
   );
 }
