@@ -21,10 +21,12 @@ export default function Card({ numero, poster, titulo, nota, emAlta }) {
         <p>
           <b>#{numero}</b>
         </p>
-        <Image src={poster} alt={titulo} className={styles.poster} />
-        <p>
-          {titulo}
-        </p>
+        <Image src={poster} alt={titulo} className={styles.poster} width={177} height={266} />
+        <span className={styles.title}>
+          <p>
+            {titulo}
+          </p>
+        </span>
         <p>
           Nota: {nota}
         </p>

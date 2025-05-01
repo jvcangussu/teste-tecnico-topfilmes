@@ -1,13 +1,29 @@
 'use client'
 
-import { useState } from "react";
+import { carregarFilmesEmAlta, carregarFilmesTopRated, filmesEmDuasListas } from "@/services/filmesServices";
+import { useState, useEffect } from "react";
 import Card from "./card";
 import styles from "./card-box.module.css"
 import posterTeste from "@/assets/poster-teste.png"
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 export default function CardBox() {
+  const [filmes, setFilmes] = useState([]);
+  const [emAlta, setEmAlta] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const dadosFilmes = await carregarFilmesTopRated();
+      setFilmes(dadosFilmes);
+      const dadosEmAlta = await carregarFilmesEmAlta();
+      setEmAlta(dadosEmAlta);
+    }
+
+    fetchData();
+  }, []);
+
   const [pagina, setPagina] = useState(1);
+  const [filmesPagina, setFilmesPagina] = useState([])
 
   function handleClickLeft() {
     if (pagina > 1) {
@@ -21,14 +37,25 @@ export default function CardBox() {
     }
   }
 
+  useEffect(() => {
+    const idxPrimeiroFilme = 5 * (pagina - 1);
+    const idxUltimoFilme = idxPrimeiroFilme + 4;
+    setFilmesPagina(filmes.slice(idxPrimeiroFilme, idxUltimoFilme + 1));
+  }, [pagina, filmes]);
+
   return (
     <div className={styles.container}>
       <div className={styles.box}>
-        <Card numero={1} poster={posterTeste} titulo={"A vida é bela"} nota={9.25} emAlta={true} />
-        <Card numero={2} poster={posterTeste} titulo={"A vida é bela"} nota={9.25} emAlta={false} />
-        <Card numero={3} poster={posterTeste} titulo={"A vida é bela"} nota={9.25} emAlta={true} />
-        <Card numero={4} poster={posterTeste} titulo={"A vida é bela"} nota={9.25} emAlta={false} />
-        <Card numero={5} poster={posterTeste} titulo={"A vida é bela"} nota={9.25} emAlta={true} />
+        {filmesPagina.map((filme, index) =>
+          <Card
+            key={index}
+            numero={(pagina - 1) * 5 + index + 1}
+            poster={`https://image.tmdb.org/t/p/w500${filme.poster_path}`}
+            titulo={filme.title}
+            nota={filme.vote_average}
+            emAlta={filmesEmDuasListas(filmes, emAlta).includes(filme.id) ? true : false}
+          />
+        )}
       </div>
       <div className={styles.controls}>
         <button onClick={handleClickLeft} className={styles.control}>
