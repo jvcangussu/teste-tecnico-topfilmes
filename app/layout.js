@@ -1,5 +1,5 @@
-import Footer from '@/components/footer/Footer';
-import './globals.css'
+import Footer from "@/components/footer/footer.js";
+import './globals.css';
 import { Mulish } from 'next/font/google';
 
 const mulish = Mulish({

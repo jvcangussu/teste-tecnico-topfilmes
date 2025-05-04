@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 20px;
+  background-color: #1A1A1A;
+  height: 80px;
+}
+
+.container p {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 40px;
+  color: #EEF0F2;
+  font-weight: 700;
+}
+
+.control {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  text-align: inherit;
+  font: inherit;
+  border-radius: 0;
+  appearance: none;
+}
+
+.control .icon {
+  color: #EEF0F2;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.control .icon:hover {
+  color: #FFD23F;
+}
