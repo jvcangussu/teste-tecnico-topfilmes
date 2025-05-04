@@ -1,35 +1,22 @@
-'use client'
-
 import Card from "@/components/card/card";
 import styles from "./page.module.css"
 import SecondaryHeader from "@/components/secondary-header/secondary-header";
 import { filmesEmDuasListas, carregarFilmesTopRated, carregarFilmesEmAlta } from "@/services/filmesServices";
-import { useState, useEffect } from "react";
-
-export default function FilmesEmAltaPage() {
-  const [filmes, setFilmes] = useState([]);
-  const [emAlta, setEmAlta] = useState([]);
+export default async function FilmesEmAltaPage() {
   let numeroFilme = 0;
 
-  useEffect(() => {
-    async function fetchData() {
-      const dadosFilmes = await carregarFilmesTopRated();
-      setFilmes(dadosFilmes);
-      const dadosEmAlta = await carregarFilmesEmAlta();
-      setEmAlta(dadosEmAlta);
-    }
+  const listaFilmes = await carregarFilmesTopRated();
+  const listaEmAlta = await carregarFilmesEmAlta();
 
-    fetchData();
-  }, []);
 
-  const filmesEmAlta = filmesEmDuasListas(filmes, emAlta);
+  const filmesEmAlta = await filmesEmDuasListas(listaFilmes, listaEmAlta);
 
   return (
     <div className={styles.container}>
       <SecondaryHeader>FILMES EM ALTA</SecondaryHeader>
       <p>{`Total de filmes em alta: ${filmesEmAlta.length}`}</p>
       <div className={styles.box}>
-        {filmes.map((filme, index) => {
+        {listaFilmes.map((filme, index) => {
           if (filmesEmAlta.includes(filme.id)) {
             numeroFilme++;
             return (
