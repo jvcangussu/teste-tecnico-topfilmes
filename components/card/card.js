@@ -1,7 +1,9 @@
 import Image from "next/image";
 import styles from "./card.module.css";
+import Link from "next/link";
 
-export default function Card({ numero, poster, titulo, nota, emAlta }) {
+export default function Card({ id, numero, poster, titulo, nota, emAlta, detalheEmModal }) {
+
   return (
     <div className={styles.container}>
       <div
@@ -30,9 +32,11 @@ export default function Card({ numero, poster, titulo, nota, emAlta }) {
         <p>
           Nota: {nota}
         </p>
-        <button className={styles.button}>
-          Detalhes
-        </button>
+        <Link href={detalheEmModal ? `/filmes/?idFilme=${id}` : `/filmes/${id}`}>
+          <button className={styles.button}>
+            Detalhes
+          </button>
+        </Link>
       </div>
     </div>
   );

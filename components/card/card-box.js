@@ -1,15 +1,22 @@
 'use client'
 
-import { carregarFilmesEmAlta, carregarFilmesTopRated, filmesEmDuasListas } from "@/services/filmesServices";
+import { carregarFilmesEmAlta, carregarFilmesTopRated, carregarGeneros, filmesEmDuasListas } from "@/services/filmesServices";
 import { useState, useEffect } from "react";
 import Card from "./card";
 import styles from "./card-box.module.css"
-import posterTeste from "@/assets/poster-teste.png"
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import Modal from "../details/modal";
+import { useSearchParams } from "next/navigation";
+import DetailsBox from "../details/details-box";
+import { useRouter } from "next/navigation";
 
 export default function CardBox() {
+  let searchParams = useSearchParams();
+  let router = useRouter();
+
   const [filmes, setFilmes] = useState([]);
   const [emAlta, setEmAlta] = useState([]);
+  const [generos, setGeneros] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -17,10 +24,14 @@ export default function CardBox() {
       setFilmes(dadosFilmes);
       const dadosEmAlta = await carregarFilmesEmAlta();
       setEmAlta(dadosEmAlta);
+      const dadosGeneros = await carregarGeneros();
+      setGeneros(dadosGeneros);
     }
 
     fetchData();
   }, []);
+
+  const filmesEmAlta = filmesEmDuasListas(filmes, emAlta);
 
   const [pagina, setPagina] = useState(1);
   const [filmesPagina, setFilmesPagina] = useState([])
@@ -45,15 +56,24 @@ export default function CardBox() {
 
   return (
     <div className={styles.container}>
+      {searchParams.get("idFilme") && (
+        <Modal onClose={() => {
+          router.push("/filmes");
+        }}>
+          <DetailsBox idFilme={searchParams.get("idFilme")} filmes={filmes} generos={generos} />
+        </Modal>
+      )}
       <div className={styles.box}>
         {filmesPagina.map((filme, index) =>
           <Card
             key={index}
+            id={filme.id}
             numero={(pagina - 1) * 5 + index + 1}
             poster={`https://image.tmdb.org/t/p/w500${filme.poster_path}`}
             titulo={filme.title}
             nota={filme.vote_average}
-            emAlta={filmesEmDuasListas(filmes, emAlta).includes(filme.id) ? true : false}
+            emAlta={filmesEmAlta.includes(filme.id) ? true : false}
+            detalheEmModal={true}
           />
         )}
       </div>

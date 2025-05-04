@@ -1,0 +1,13 @@
+.box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.container p {
+  text-align: center;
+  font-weight: 700;
+  color: #EEF0F2;
+}

@@ -6,48 +6,43 @@ const options = {
   }
 };
 
+let filmesTopRated = null;
+let filmesEmAlta = null;
+let generosFilmes = null;
+
 export async function carregarFilmesTopRated() {
+  if (filmesTopRated) return filmesTopRated;
   const urlBase = 'https://api.themoviedb.org/3/movie/top_rated?language=pt-BR&page=';
   const promises = [];
-
   for (let i = 1; i <= 13; i++) {
     const url = `${urlBase}${i}`;
-    promises.push(
-      fetch(url, options).then(async res => {
-        const json = await res.json();
-        if (!res.ok || json.success === false) {
-          console.error("Erro ao buscar página", i, json);
-        }
-        return json;
-      })
-    );
+    promises.push(fetch(url, options).then(res => res.json()));
   }
-
   const responses = await Promise.all(promises);
-  const filmes = responses.flatMap(res => res.results).slice(0, 250);
-  return filmes;
+  filmesTopRated = responses.flatMap(res => res.results).slice(0, 250);
+  return filmesTopRated;
 }
 
 export async function carregarFilmesEmAlta() {
+  if (filmesEmAlta) return filmesEmAlta;
   const urlBase = 'https://api.themoviedb.org/3/trending/movie/week?language=pt-BR&page=';
   const promises = [];
-
   for (let i = 1; i <= 20; i++) {
     const url = `${urlBase}${i}`;
-    promises.push(
-      fetch(url, options).then(async res => {
-        const json = await res.json();
-        if (!res.ok || json.success === false) {
-          console.error("Erro ao buscar página", i, json);
-        }
-        return json;
-      })
-    );
+    promises.push(fetch(url, options).then(res => res.json()));
   }
-
   const responses = await Promise.all(promises);
-  const emAlta = responses.flatMap(res => res.results);
-  return emAlta;
+  filmesEmAlta = responses.flatMap(res => res.results);
+  return filmesEmAlta;
+}
+
+export async function carregarGeneros() {
+  if (generosFilmes) return generosFilmes;
+  const url = 'https://api.themoviedb.org/3/genre/movie/list?language=pt-BR';
+  const res = await fetch(url, options);
+  const json = await res.json();
+  generosFilmes = json.genres || [];
+  return generosFilmes;
 }
 
 export function filmesEmDuasListas(listaFilmes1, listaFilmes2) {
@@ -56,4 +51,12 @@ export function filmesEmDuasListas(listaFilmes1, listaFilmes2) {
 
   const filmesEmAmbos = listaFilmes1.filter(filme => listaFilmes2.includes(filme));
   return filmesEmAmbos;
+}
+
+export function buscarFilmePorID(listaFilmes, idBusca) {
+  return listaFilmes.find(filme => String(filme.id) === String(idBusca));
+}
+
+export function getNomesGeneros(listaGeneros, listaIdGeneros) {
+  return listaGeneros.filter(genero => listaIdGeneros.includes(genero.id)).flatMap(genero => genero.name);
 }
