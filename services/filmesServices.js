@@ -1,3 +1,5 @@
+import slugify from "slugify";
+
 const options = {
   method: 'GET',
   headers: {
@@ -76,4 +78,11 @@ export function getNotaMediaFilmes(listaFilmes) {
   })
   const media = somaNotas / listaFilmes.length;
   return media.toFixed(3);
+}
+
+export async function getGeneroPorSlug(slugGenero) {
+  const generos = await carregarGeneros();
+  let generoEncontrado = generos.find(genero => slugify(genero.name, { lower: true }) === slugGenero);
+
+  return generoEncontrado;
 }
