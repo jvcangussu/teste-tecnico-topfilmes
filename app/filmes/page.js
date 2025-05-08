@@ -1,5 +1,3 @@
-'use client'
-
 import MainHeader from "@/components/main-header/main-header";
 import styles from "./page.module.css";
 import Link from "next/link";

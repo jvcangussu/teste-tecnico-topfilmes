@@ -1,3 +1,5 @@
+import slugify from "slugify";
+
 const options = {
   method: 'GET',
   headers: {
@@ -59,4 +61,28 @@ export function buscarFilmePorID(listaFilmes, idBusca) {
 
 export function getNomesGeneros(listaGeneros, listaIdGeneros) {
   return listaGeneros.filter(genero => listaIdGeneros.includes(genero.id)).flatMap(genero => genero.name);
+}
+
+export function getFilmesGenero(listaFilmes, idGenero) {
+  return listaFilmes.filter(filme => filme.genre_ids.includes(idGenero))
+}
+
+export function getNotaMediaFilmes(listaFilmes) {
+  if (listaFilmes.length === 0) {
+    return 0;
+  }
+
+  let somaNotas = 0;
+  listaFilmes.forEach(filme => {
+    somaNotas += filme.vote_average;
+  })
+  const media = somaNotas / listaFilmes.length;
+  return media.toFixed(3);
+}
+
+export async function getGeneroPorSlug(slugGenero) {
+  const generos = await carregarGeneros();
+  let generoEncontrado = generos.find(genero => slugify(genero.name, { lower: true }) === slugGenero);
+
+  return generoEncontrado;
 }

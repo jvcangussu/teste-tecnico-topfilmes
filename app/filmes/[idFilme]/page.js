@@ -1,7 +1,10 @@
-export default function FilmesPage({ params }) {
+export default async function FilmesPage({ params }) {
+
+  const { idFilme } = await params;
+
   return (
     <main>
-      <p>Página do filme {params.idFilme}</p>
+      <p>Página do filme {idFilme}</p>
     </main>
   );
 }
