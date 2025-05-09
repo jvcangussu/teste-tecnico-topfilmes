@@ -82,7 +82,33 @@ export function getNotaMediaFilmes(listaFilmes) {
 
 export async function getGeneroPorSlug(slugGenero) {
   const generos = await carregarGeneros();
-  let generoEncontrado = generos.find(genero => slugify(genero.name, { lower: true }) === slugGenero);
+  const generoEncontrado = generos.find(genero => slugify(genero.name, { lower: true }) === slugGenero);
 
   return generoEncontrado;
+}
+
+export function getAnosEFilmesPorAno(filmes) {
+  let anos = [];
+  let filmesPorAno = [];
+
+  filmes.forEach((filme) => {
+    const dataLancamento = new Date(filme.release_date);
+    const anoLancamento = dataLancamento.getFullYear();
+    if (!anos.includes(anoLancamento)) {
+      anos.push(anoLancamento);
+      filmesPorAno.push(
+        {
+          ano: anoLancamento,
+          listaFilmes: [filme]
+        }
+      );
+    } else {
+      const anoEncontrado = filmesPorAno.find(anoNaLista => anoNaLista.ano === anoLancamento);
+      anoEncontrado.listaFilmes.push(filme);
+    }
+  })
+
+  filmesPorAno = filmesPorAno.sort((ano1, ano2) => ano2.ano - ano1.ano);
+
+  return filmesPorAno;
 }

@@ -2,6 +2,16 @@ import MainHeader from "@/components/main-header/main-header";
 import styles from "./page.module.css";
 import Link from "next/link";
 import CardBox from "@/components/card/card-box";
+import { Suspense } from "react";
+import { carregarFilmesEmAlta, carregarFilmesTopRated, carregarGeneros } from "@/services/filmesServices";
+
+async function Filmes() {
+  const filmes = await carregarFilmesTopRated();
+  const filmesEmAlta = await carregarFilmesEmAlta();
+  const generos = await carregarGeneros();
+  return <CardBox filmes={filmes} emAlta={filmesEmAlta} generos={generos} />;
+}
+
 
 export default function FilmesPage() {
 
@@ -16,7 +26,9 @@ export default function FilmesPage() {
           <p>Filmes por ano de lançamento</p>
         </Link>
       </div>
-      <CardBox />
+      <Suspense fallback={<p className={styles.loading}>Carregando filmes...</p>}>
+        <Filmes />
+      </Suspense>
     </>
   );
 }

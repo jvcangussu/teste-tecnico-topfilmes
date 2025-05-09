@@ -13,3 +13,7 @@
 .link:hover {
   color: #FFC405;
 }
+
+.loading {
+  text-align: center;
+}

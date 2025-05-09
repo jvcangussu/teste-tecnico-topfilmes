@@ -10,26 +10,26 @@ import { useSearchParams } from "next/navigation";
 import DetailsBox from "../details/details-box";
 import { useRouter } from "next/navigation";
 
-export default function CardBox() {
+export default function CardBox({ filmes, emAlta, generos }) {
   let searchParams = useSearchParams();
   let router = useRouter();
 
-  const [filmes, setFilmes] = useState([]);
-  const [emAlta, setEmAlta] = useState([]);
-  const [generos, setGeneros] = useState([]);
+  // const [filmes, setFilmes] = useState([]);
+  // const [emAlta, setEmAlta] = useState([]);
+  // const [generos, setGeneros] = useState([]);
 
-  useEffect(() => {
-    async function fetchData() {
-      const dadosFilmes = await carregarFilmesTopRated();
-      setFilmes(dadosFilmes);
-      const dadosEmAlta = await carregarFilmesEmAlta();
-      setEmAlta(dadosEmAlta);
-      const dadosGeneros = await carregarGeneros();
-      setGeneros(dadosGeneros);
-    }
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const dadosFilmes = await carregarFilmesTopRated();
+  //     setFilmes(dadosFilmes);
+  //     const dadosEmAlta = await carregarFilmesEmAlta();
+  //     setEmAlta(dadosEmAlta);
+  //     const dadosGeneros = await carregarGeneros();
+  //     setGeneros(dadosGeneros);
+  //   }
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   const filmesEmAlta = filmesEmDuasListas(filmes, emAlta);
 
@@ -43,7 +43,7 @@ export default function CardBox() {
   }
 
   function handleClickRight() {
-    if (pagina < 50) {
+    if (pagina < (filmes.length / 5)) {
       setPagina(pagina + 1)
     }
   }
@@ -83,7 +83,7 @@ export default function CardBox() {
         </button>
         <p>
           Página: <br />
-          {pagina}/50
+          {pagina}/{filmes.length / 5}
         </p>
         <button onClick={handleClickRight} className={styles.control}>
           <FaChevronRight className={styles.icon} />
