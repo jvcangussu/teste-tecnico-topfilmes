@@ -16,7 +16,7 @@ export default function DetailsBox({ idFilme, filmes, generos }) {
       <h1>{filme.title}</h1>
       <Image src={`https://image.tmdb.org/t/p/w500${filme.backdrop_path}`} className={styles.backdrop} alt={`Banner do filme ${filme.title}`} width={485} height={273}></Image>
       <p>{conteudoGeneros}</p>
-      <p>{filme.overview}</p>'
+      <p>{filme.overview}</p>
       <p>Data de lançamento: {dataFormatada}</p>
       <p>Nota média: {filme.vote_average}</p>
       <button className={styles.button}>Adicionar à minha lista</button>
