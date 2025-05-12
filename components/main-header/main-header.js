@@ -20,12 +20,12 @@ export default function MainHeader() {
           </li>
         </ul>
       </nav>
-      <Link className={styles.button} href="/filmes/meus-filmes">
+      {/* <Link className={styles.button} href="/filmes/meus-filmes">
         <p>
           MEUS<br />
           FILMES
         </p>
-      </Link>
+      </Link> */}
     </header>
   );
 }

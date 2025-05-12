@@ -87,6 +87,13 @@ export async function getGeneroPorSlug(slugGenero) {
   return generoEncontrado;
 }
 
+export async function getFilmePorSlug(slugFilme) {
+  const filmes = await carregarFilmesTopRated();
+  const filmeEncontrado = filmes.find(filme => slugify(filme.title, { lower: true, strict: true }) === slugFilme);
+
+  return filmeEncontrado
+}
+
 export function getAnosEFilmesPorAno(filmes) {
   let anos = [];
   let filmesPorAno = [];

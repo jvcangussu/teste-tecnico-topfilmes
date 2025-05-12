@@ -19,7 +19,7 @@ export default function DetailsBox({ idFilme, filmes, generos }) {
       <p>{filme.overview}</p>
       <p>Data de lançamento: {dataFormatada}</p>
       <p>Nota média: {filme.vote_average}</p>
-      <button className={styles.button}>Adicionar à minha lista</button>
+      {/* <button className={styles.button}>Adicionar à minha lista</button> */}
     </div>
   );
 }

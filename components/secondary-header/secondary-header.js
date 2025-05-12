@@ -6,9 +6,10 @@ import { RiArrowGoBackFill } from "react-icons/ri";
 
 export default function SecondaryHeader({ children }) {
   const router = useRouter();
+
   return (
     <header className={styles.container}>
-      <button onClick={() => router.push("/filmes")} className={styles.control}><RiArrowGoBackFill className={styles.icon} /></button>
+      <button onClick={() => { router.back() }} className={styles.control}><RiArrowGoBackFill className={styles.icon} /></button>
       <p>{children}</p>
     </header>
   )
