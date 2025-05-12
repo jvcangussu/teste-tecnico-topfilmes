@@ -2,11 +2,15 @@ import SecondaryHeader from "@/components/secondary-header/secondary-header";
 import { getGeneroPorSlug, getFilmesGenero, carregarFilmesTopRated, carregarFilmesEmAlta, filmesEmDuasListas } from "@/services/filmesServices";
 import styles from "./page.module.css"
 import Card from "@/components/card/card";
+import { notFound } from "next/navigation";
 
 export default async function GeneroPage({ params }) {
 
   const { slugGenero } = await params;
   const genero = await getGeneroPorSlug(slugGenero);
+  if (!genero) {
+    notFound();
+  }
   const filmes = await carregarFilmesTopRated();
   const filmesGenero = await getFilmesGenero(filmes, genero.id);
   const listaEmAlta = await carregarFilmesEmAlta();
