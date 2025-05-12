@@ -2,6 +2,7 @@ import Card from "@/components/card/card";
 import styles from "./page.module.css"
 import SecondaryHeader from "@/components/secondary-header/secondary-header";
 import { filmesEmDuasListas, carregarFilmesTopRated, carregarFilmesEmAlta } from "@/services/filmesServices";
+import PieChartComponent from "@/components/charts/pie-chart-component";
 export default async function FilmesEmAltaPage() {
   let numeroFilme = 0;
 
@@ -11,10 +12,18 @@ export default async function FilmesEmAltaPage() {
 
   const filmesEmAlta = await filmesEmDuasListas(listaFilmes, listaEmAlta);
 
+  const dadosGrafico = [
+    { name: "Em alta", value: filmesEmAlta.length },
+    { name: "Não em alta", value: (listaFilmes.length - filmesEmAlta.length) }
+  ]
+
   return (
     <div className={styles.container}>
       <SecondaryHeader>FILMES EM ALTA</SecondaryHeader>
       <p>{`Total de filmes em alta: ${filmesEmAlta.length}`}</p>
+      <div className={styles.chartCard}>
+        <PieChartComponent data={dadosGrafico} />
+      </div>
       <div className={styles.box}>
         {listaFilmes.map((filme, index) => {
           if (filmesEmAlta.includes(filme.id)) {
