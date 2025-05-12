@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "./card.module.css";
 import Link from "next/link";
+import slugify from "slugify";
 
 export default function Card({ id, numero, poster, titulo, nota, emAlta, detalheEmModal }) {
 
@@ -32,7 +33,7 @@ export default function Card({ id, numero, poster, titulo, nota, emAlta, detalhe
         <p>
           Nota: {nota}
         </p>
-        <Link href={detalheEmModal ? `/filmes/?idFilme=${id}` : `/filmes/${id}`}>
+        <Link href={detalheEmModal ? `/filmes/?idFilme=${id}` : `/filmes/${slugify(titulo, { lower: true, strict: true })}`} >
           <button className={styles.button}>
             Detalhes
           </button>
