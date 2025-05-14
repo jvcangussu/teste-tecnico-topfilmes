@@ -1,0 +1,26 @@
+.chartWrapper {
+  width: 1000;
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  color: #ffc405;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 0.8rem;
+  margin-top: 0px;
+  margin-bottom: 8px;
+}

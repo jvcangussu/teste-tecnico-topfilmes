@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80dvh;
+  padding: 1rem;
+  text-align: center;
+}
+
+.link {
+  color: #FFD23F;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #ffdc67;
+}
