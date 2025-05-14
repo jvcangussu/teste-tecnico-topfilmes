@@ -1,4 +1,4 @@
-import Footer from '@/components/footer/footer';
+import Footer from '@/components/footer/footer-pages';
 import './globals.css';
 import { Mulish } from 'next/font/google';
 
