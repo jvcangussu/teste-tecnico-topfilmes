@@ -20,8 +20,8 @@
 - **Git** - 
 - **Figma** - 
 
-<p>*A plataforma Jira foi utilizada para planejamento do desenvolvimento de maneira ágil</p>
-<p>*O assistente de IA ChatGPT foi utilizado para algumas tarefas como: Gerar imagens, ajuda com estilização, construir o ReadMe</p>
+<p>*A plataforma Jira foi utilizada para planejamento do desenvolvimento de maneira ágil.</p>
+<p>*O assistente de IA ChatGPT foi utilizado para algumas tarefas como: Gerar imagens, ajuda com estilização, construir o ReadMe.</p>
 
 ###
 
