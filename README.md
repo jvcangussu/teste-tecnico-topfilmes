@@ -25,7 +25,7 @@
 
 ###
 
-<h2 align="left>👨🏽‍💻 Tutorial para testar localmente:</h2>
+<h2 align="left">👨‍💻 Tutorial para testar localmente:</h2>
 
 ###
 
