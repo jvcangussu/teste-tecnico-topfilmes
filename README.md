@@ -3,6 +3,7 @@
 
 <p>A aplicação coleta os 250 filmes mais bem avaliados pela comunidade da TMDb e gera métricas relevantes, apresentando essas informações de forma estruturada e acessível. O projeto também explora a interseção entre os filmes top-rated e os filmes em alta na semana (Trending Movies), além de análises por gênero e ano de lançamento.</p>
 
+<p>Você pode ter acesso à aplicação acessando o link a seguir: <a href="https://teste-tecnico-topfilmes.vercel.app/">TopFilmes</a></p>
 ###
 
 <h2 align="left">💻 Tecnologias utilizadas:</h2>
