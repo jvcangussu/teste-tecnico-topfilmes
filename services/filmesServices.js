@@ -19,7 +19,7 @@ export async function carregarFilmesTopRated() {
     promises.push(fetch(url, options).then(res => res.json()));
   }
   const responses = await Promise.all(promises);
-  filmesTopRated = responses.flatMap(res => res.results).slice(0, 250);
+  const filmesTopRated = responses.flatMap(res => res.results).slice(0, 250);
   return filmesTopRated;
 }
 
@@ -31,7 +31,7 @@ export async function carregarFilmesEmAlta() {
     promises.push(fetch(url, options).then(res => res.json()));
   }
   const responses = await Promise.all(promises);
-  filmesEmAlta = responses.flatMap(res => res.results);
+  const filmesEmAlta = responses.flatMap(res => res.results);
   return filmesEmAlta;
 }
 
@@ -39,7 +39,7 @@ export async function carregarGeneros() {
   const url = 'https://api.themoviedb.org/3/genre/movie/list?language=pt-BR';
   const res = await fetch(url, options);
   const json = await res.json();
-  generosFilmes = json.genres || [];
+  const generosFilmes = json.genres || [];
   return generosFilmes;
 }
 
