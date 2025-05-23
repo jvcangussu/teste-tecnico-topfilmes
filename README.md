@@ -21,7 +21,7 @@
 - **Figma** - Utilizado como ferramenta de design para guiar a implementação da interface com base em protótipos visuais.
 
 <p>*A plataforma Jira foi utilizada para planejamento do desenvolvimento de maneira ágil.</p>
-<p>*O assistente de IA ChatGPT foi utilizado para algumas tarefas como: Gerar imagens, ajuda com estilização, construir o ReadMe.</p>
+<p>*O assistente de IA ChatGPT foi utilizado para algumas tarefas como: Gerar imagens, ajuda com estilização, construir gráficos, construir o ReadMe.</p>
 
 ###
 
@@ -71,6 +71,37 @@ Abra o navegador e navegue para o endereço: http://localhost:3000
 
 <h2 align="left">📖 Relato sobre o desenvolvimento:</h2>
 
+Este desafio técnico foi uma experiência muito enriquecedora, pois me permitiu colocar a prova o meu conhecimetno sobre uma tecnologia a qual eu já estava estudando (NextJs).
+
+Consegui concluir todas as features obrigatórias propostas e a maioria das features bônus, e cada uma contribuiu ainda mais para o meu aprendizado através dos desafios enfrentados em cada parte.
+
+Uma lista dos desafios os quais superei foram:
+- Planejar sprints com a ferramenta Jira
+- Fazer design com a ferramenta Figma
+- Consumir API paginada e mostrar apenas a quantidade exata de resultados.
+- Abrir modals utilizando a navegação do NextJS (searchParams utilizado)
+- Fazer caching de requisições no NextJs
+- Gerar gráficos animados (biblioteca Recharts)
+- Fazer deploy de uma aplicação NextJs
+
+Minha maior fonte de conteúdo foi o curso que já estava em andamento na Udemy:
+Next.js 15 & React - The Complete Guide (Maximilian Schwarzmüller)
+
+Alguns vídeos do youtube que foram importantes:
+- https://www.youtube.com/watch?v=d9ENSQMtHkY&t=1s
+- https://www.youtube.com/watch?v=P4W_LaotmNI&t=34s
+
+ChatGPT Plus utilizado para:
+- Modelagem e estilização de alguns componentes React
+- Gerar a logo da TopFilmes
+- Ajuda na montagem dos gráficos com a biblioteca Recharts
+- Dúvida sobre Caching no NextJs v15 (que agora não é mais automático)
+- Ajuda com o deploy
+- Construção do ReadMe
+
+### 
+🚀 **Conclusão**:
+Este projeto não apenas expandiu meu conhecimento técnico serviu para reforçar aquilo que eu já estava colocando em prática. Pude treinar bem aquilo que é necessário para alcançar o meu objetivo de se tornar um desenvolvedor front-end. Além disso, este desafio foi uma excelente oportunidade para ampliar o meu portifólio e principalmente de convencer a mim mesmo que sou capaz de planejar, realizar e colocar projetos de software em prática.
 ###
 
 <h2 align="left">📩 Contato:</h2>
